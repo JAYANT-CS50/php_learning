@@ -17,11 +17,6 @@ if(isset($_POST['submit'])){
   $gender = $_POST['gender'];
   
 
-
-
-  
-
-
     $sql = "INSERT INTO form (firstname, middlename, lastname, email, fathername, mothername, mobileno, phoneno, pincode, state, city, gender)
     VALUES ('$firstname', '$middlename','$lastname','$email','$fathername','$mothername','$mobileno','$phoneno','$pincode','$state','$city', '$gender')";
 
@@ -32,9 +27,6 @@ if(isset($_POST['submit'])){
     }
 
   $conn->close();
-
 }
-
-
 
 ?>
