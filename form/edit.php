@@ -33,11 +33,12 @@ if(isset($_POST['submit'])){
   $state = $_POST['state'];
   $city = $_POST['city'];
   $gender = $_POST['gender'];
+  $language = $_POST['hindi'] . ", " . $_POST['english'];
   
 
 
   $sql = "UPDATE form
-  SET firstname='$firstname', middlename='$middlename', lastname='$lastname', email='$email', fathername='$fathername', mothername='$mothername', mobileno='$mobileno', phoneno='$phoneno', pincode='$pincode', state='$state', city='$city', gender='$gender'  
+  SET firstname='$firstname', middlename='$middlename', lastname='$lastname', email='$email', fathername='$fathername', mothername='$mothername', mobileno='$mobileno', phoneno='$phoneno', pincode='$pincode', state='$state', city='$city', gender='$gender', language='$language'  
   WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
@@ -47,7 +48,7 @@ if(isset($_POST['submit'])){
     }
 
     header("Location: http://localhost:8080/php_practice/form/show.php");
-    exit; 
+    
  
 }
 
@@ -118,9 +119,20 @@ if(isset($_POST['submit'])){
             </div>
             <div class="col">
               Gender : 
-              <input class="form-check-input" type="radio"  name="gender" value="1" required>Male
+              <input class="form-check-input" type="radio"  name="gender" value="1" required >Male
               <input class="form-check-input" type="radio"  name="gender" value="2" required>Female
               <input type="hidden" name="hidden_id" value="<?php echo $row["id"]?>">
+            </div>
+          </div>
+          <div class="row align-items-start" style="margin-top: 50px;">
+            <div class="col">
+              Language:
+              <label for="checkbox1" style="margin-left: 50px;">Hindi</label>
+              <input type="checkbox" id="checkbox1" name="hindi" value="hindi" >
+
+              <label for="checkbox2" style="margin-left: 50px;">English</label>
+              <input type="checkbox" id="checkbox2" name="english" value="english" >
+
             </div>
           </div>
 

@@ -15,10 +15,12 @@ if(isset($_POST['submit'])){
   $state = $_POST['state'];
   $city = $_POST['city'];
   $gender = $_POST['gender'];
+  $language = $_POST['hindi'] . ", " . $_POST['english'];
+
   
 
-    $sql = "INSERT INTO form (firstname, middlename, lastname, email, fathername, mothername, mobileno, phoneno, pincode, state, city, gender)
-    VALUES ('$firstname', '$middlename','$lastname','$email','$fathername','$mothername','$mobileno','$phoneno','$pincode','$state','$city', '$gender')";
+    $sql = "INSERT INTO form (firstname, middlename, lastname, email, fathername, mothername, mobileno, phoneno, pincode, state, city, gender, language)
+    VALUES ('$firstname', '$middlename','$lastname','$email','$fathername','$mothername','$mobileno','$phoneno','$pincode','$state','$city', '$gender', '$language')";
 
     if ($conn->query($sql) === TRUE) {
     echo "New record created successfully";

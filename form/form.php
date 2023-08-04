@@ -76,6 +76,20 @@ include"header.php";
               <input class="form-check-input" type="radio"  name="gender" value="2">Female
             </div>
           </div>
+          <div class="row align-items-start" style="margin-top: 50px;">
+            <div class="col">
+              Language:
+              <label for="checkbox1" style="margin-left: 50px;">Hindi</label>
+              <input type="checkbox" id="checkbox1" name="hindi" value="hindi" >
+
+              <label for="checkbox2" style="margin-left: 50px;">English</label>
+              <input type="checkbox" id="checkbox2" name="english" value="english" >
+
+            </div>
+          </div>
+
+          </div>
+          </div>
 
         </div>
         <button type="submit" name="submit" class="btn btn-primary" style="margin-top: 25px;">Submit</button>

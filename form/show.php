@@ -26,17 +26,19 @@ $result = $conn->query($sql);
       <th scope="col">State</th>
       <th scope="col">City</th>
       <th scope="col">Gender</th>
+      <th scope="col">Language</th>
       <th scope="col">Action</th>
 
     </tr>
   </thead>
   <tbody>
     <?php
+    $x = 0;
   if ($result->num_rows > 0) {
   while($row = $result->fetch_assoc()) {
     ?>
     <tr>
-      <th><?php echo $row["id"]; ?></th>
+      <th><?php  $x += 1; echo $x; ?></th>
       <td><?php echo $row["firstname"]. " ". $row["middlename"]. " " .$row["lastname"]; ?></td>
       <td><?php echo $row["email"]; ?></td>
       <td><?php echo $row["fathername"]; ?></td>
@@ -55,6 +57,7 @@ $result = $conn->query($sql);
               }
 
               ?></td>
+      <td><?php echo $row["language"]; ?></td>
       <td><button type="button" class="btn btn-info"><a style="text-decoration: none; color: black;" href="edit.php/?q=<?php echo $row['id'];?>"> Edit </a></button> <br>
       <button type="button" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="delete.php/?q=<?php echo $row['id'];?>"> Delete </a></button>  </td>
     <?php
