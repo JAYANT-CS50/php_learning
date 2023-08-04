@@ -1,22 +1,26 @@
 <?php 
 include"header.php";
 include"connection.php";
-?>
+?>  
 
 <?php 
-if (isset($_GET['q'])) {
-  $id = $_GET['q'];
 
+if (isset($_GET['q'])) {
+
+  $id = $_GET['q'];
+ 
   $sql = "SELECT * FROM form WHERE id=$id";
   $result = $conn->query($sql);
   $row = $result->fetch_assoc();
 } else {
   // Default value if 'name' parameter is not present in the URL
+  
   $id = "Default Name";
 }
 
 if(isset($_POST['submit'])){
 
+  $id = $_POST['hidden_id'];
   $firstname = $_POST['firstname'];
   $middlename = $_POST['middlename'];
   $lastname = $_POST['lastname'];
@@ -33,7 +37,7 @@ if(isset($_POST['submit'])){
 
 
   $sql = "UPDATE form
-  SET firstname='$firstname', middlename='$middlename', lastname='$lastname', email='$email', fathername='$fathername', mothername='$mothername', mobileno='$mobileno', phoneno='$phoneno', pincode='$pincode', state='$state', city='$city', gender='$gender'
+  SET firstname='$firstname', middlename='$middlename', lastname='$lastname', email='$email', fathername='$fathername', mothername='$mothername', mobileno='$mobileno', phoneno='$phoneno', pincode='$pincode', state='$state', city='$city', gender='$gender'  
   WHERE id=$id";
 
     if ($conn->query($sql) === TRUE) {
@@ -42,12 +46,16 @@ if(isset($_POST['submit'])){
     echo "Error: " . $sql . "<br>" . $conn->error;
     }
 
+    header("Location: http://localhost:8080/php_practice/form/show.php");
+    exit; 
  
 }
+
+
 ?>
 
 <div class="container " style="margin-top: 50px;">
-      <form action="data.php" method="post">
+      <form action="edit.php" method="post">
         <div class="container">
           <div class="row align-items-start">
             <div class="mb-4 col" >
@@ -112,12 +120,14 @@ if(isset($_POST['submit'])){
               Gender : 
               <input class="form-check-input" type="radio"  name="gender" value="1" required>Male
               <input class="form-check-input" type="radio"  name="gender" value="2" required>Female
+              <input type="hidden" name="hidden_id" value="<?php echo $row["id"]?>">
             </div>
           </div>
 
         </div>
         <button type="submit" name="submit" class="btn btn-primary" style="margin-top: 25px;">Update Data</button>
       </form>
+
     </div>
   </body>
 </html>
@@ -125,12 +135,6 @@ if(isset($_POST['submit'])){
 
 
 
-
-
-
-
-
-
 <?php 
-include"footer.php"
+include"footer.php";
 ?>

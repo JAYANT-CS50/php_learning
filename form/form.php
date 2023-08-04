@@ -3,8 +3,10 @@
 include"data.php";
 include"header.php";
 
-
 ?>
+    <div class="container" style="margin-bottom: 50px;">
+      <button type="button" class="btn btn-dark" style="margin-left: 900px;"><a style="text-decoration: none; color: white;" href="show.php" />Existing Data</a></button>
+    </div>
 
     <div class="container " style="margin-top: 50px;">
       <form action="data.php" method="post">

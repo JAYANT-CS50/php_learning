@@ -27,6 +27,9 @@ if(isset($_POST['submit'])){
     }
 
   $conn->close();
+
+  header("Location: http://localhost:8080/php_practice/form/show.php");
+    exit; 
 }
 
 ?>

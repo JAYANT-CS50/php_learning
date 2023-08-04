@@ -8,6 +8,10 @@ include("connection.php");
 $sql = "SELECT * FROM form";
 $result = $conn->query($sql);
 ?>
+
+<div class="container" style="margin-bottom: 50px;">
+  <button type="button" class="btn btn-primary" style="margin-left: 900px;"><a style="text-decoration: none; color: white;" href="form.php" />Add New Data</a></button>
+</div>
 <table class="table">
   <thead>
     <tr>
@@ -51,7 +55,8 @@ $result = $conn->query($sql);
               }
 
               ?></td>
-      <td><a href="edit.php/?q=<?php echo $row['id'];?>"> Edit </a>
+      <td><button type="button" class="btn btn-info"><a style="text-decoration: none; color: black;" href="edit.php/?q=<?php echo $row['id'];?>"> Edit </a></button> <br>
+      <button type="button" class="btn btn-danger"><a style="text-decoration: none; color: white;" href="delete.php/?q=<?php echo $row['id'];?>"> Delete </a></button>  </td>
     <?php
    }
      }
