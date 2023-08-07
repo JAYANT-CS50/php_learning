@@ -26,6 +26,19 @@ if (isset($_GET['colorsubmit'])) {
 }
 
 
+$gender = array("male"=>"1", "female"=>"2", "other"=>"3");
+$languages = array("Hindi", "English", "Tamil", "Telagu", "Kannad", "Orriya", "Malyali", "Punjabi");
+$arrlength = count($languages);
+
+
+
+$sql = "SELECT * FROM states";
+$result = $conn->query($sql);
+
+$sql = "SELECT * FROM cities";
+$city = $conn->query($sql);
+
+
 ?>
 
 
@@ -102,33 +115,55 @@ if (isset($_GET['colorsubmit'])) {
             <div class="col">
               <select class="form-select" aria-label="Default select example" name="state">
                 <option selected>State</option>
-                <option value="1">One</option>
-                <option value="2">Two</option>
-                <option value="3">Three</option>
+                <?php
+                if ($result->num_rows > 0) {
+                  while($row = $result->fetch_assoc()) {
+                    ?>
+                    <option value="<?php echo $row['id']?>"><?php echo $row['name']?></option>
+                    <?php
+
+                  }
+                }
+                ?>
               </select>
             </div>
             <div class="col">
                 <select class="form-select" aria-label="Default select example" name="city">
-                  <option selected>City</option>
-                  <option value="1">One</option>
-                  <option value="2">Two</option>
-                  <option value="3">Three</option>
+                <option value="" selected>City</option>
+                  <?php 
+                  if ($city->num_rows > 0){
+                    while($row = $city->fetch_assoc()) {
+
+                      ?><option value="<?php echo $row['id']; ?>"><?php echo $row['city']?></option>
+                      <?php
+                    }
+                }
+                  ?>
                 </select>
             </div>
             <div class="col">
               Gender : 
-              <input class="form-check-input" type="radio"  name="gender" value="1">Male
-              <input class="form-check-input" type="radio"  name="gender" value="2">Female
+              <?php 
+              foreach($gender as $x => $x_value){
+
+                ?><input class="form-check-input" type="radio"  name="gender" value="<?php echo "$x_value"; ?>"><?php echo "$x";
+              }
+              ?>
             </div>
           </div>
           <div class="row align-items-start" style="margin-top: 50px;">
             <div class="col">
               Language:
-              <label for="checkbox1" style="margin-left: 50px;">Hindi</label>
-              <input type="checkbox" id="checkbox1" name="hindi" value="hindi" >
+              <?php 
+              for($x = 0; $x < $arrlength; $x++){
 
-              <label for="checkbox2" style="margin-left: 50px;">English</label>
-              <input type="checkbox" id="checkbox2" name="english" value="english" >
+                ?>
+                <label for="<?php echo $languages[$x]; ?>" style="margin-left: 50px;"><?php echo $languages[$x];?></label>
+                <input type="checkbox" id="<?php echo $languages[$x];?>" name="language[]" value="<?php echo $languages[$x];?>" >
+
+                <?php
+              }
+              ?>
 
             </div>
           </div>
