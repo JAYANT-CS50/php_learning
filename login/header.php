@@ -46,7 +46,6 @@
               echo "Login"; 
           }
           ?></a>
-          </a>
         </li>
       </ul>
     </div>
