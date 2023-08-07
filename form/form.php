@@ -1,12 +1,57 @@
 <?php
+session_start();
 
 include"data.php";
 include"header.php";
 
 ?>
+
+<?php 
+if (isset($_GET['colorsubmit'])) {
+  
+
+  if($_SESSION["favcolor"] == "gray"){
+
+    $_SESSION["favcolor"] = "white";
+
+  } else {
+    $_SESSION["favcolor"] = $_GET['color'];
+  }
+  header("Location: form.php");
+
+
+
+  
+  // Set the favorite color to "yellow" (change it to your desired color)
+}
+
+
+?>
+
+
+
+
+
+<div style="background-color: <?php echo $_SESSION['favcolor']; ?>">
     <div class="container" style="margin-bottom: 50px;">
       <button type="button" class="btn btn-dark" style="margin-left: 900px;"><a style="text-decoration: none; color: white;" href="show.php" />Existing Data</a></button>
+      <form action="form.php"  method="get">
+        <input type="hidden" value="gray" name="color">
+      <button type="submit" name="colorsubmit" class="btn btn-secondary"><?php  
+        if($_SESSION["favcolor"] == "gray"){
+
+          echo "White";
+      
+        } else {
+      
+          echo "Gray";
+      
+        }
+      
+      ?></button>
+      </form>
     </div>
+    
 
     <div class="container " style="margin-top: 50px;">
       <form action="data.php" method="post">
@@ -95,9 +140,11 @@ include"header.php";
         <button type="submit" name="submit" class="btn btn-primary" style="margin-top: 25px;">Submit</button>
       </form>
     </div>
+    </div>
   </body>
 </html>
 
 <?php
+
 include"footer.php"; 
 ?>

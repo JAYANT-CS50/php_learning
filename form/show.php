@@ -15,7 +15,7 @@ $result = $conn->query($sql);
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">Id</th>
+      <th scope="col">S No.</th>
       <th scope="col">Name</th>
       <th scope="col">Email</th>
       <th scope="col">Father Name</th>

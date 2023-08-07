@@ -33,7 +33,7 @@ if(isset($_POST['submit'])){
   $state = $_POST['state'];
   $city = $_POST['city'];
   $gender = $_POST['gender'];
-  $language = $_POST['hindi'] . ", " . $_POST['english'];
+  $language = $_POST['hindi'] . " " . $_POST['english'];
   
 
 
